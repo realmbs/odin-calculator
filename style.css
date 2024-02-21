@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.container ul {
+  list-style: none;
+}
+.number--container {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 50%
+}
+.number--container ul {
+  padding: 0;
+  margin: 0;
+}
+.operator--container {
+  display: flex;
+  flex-direction: row;
+}
+.operator--container ul {
+  padding: 0;
+  margin: 0;
+}

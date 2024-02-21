@@ -15,3 +15,4 @@ const calculator: Calculator = {
   exponent: (a, b) => a ** b,
   sqrt: (a) => Math.sqrt(a)
 }
+
