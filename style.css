@@ -21,7 +21,13 @@
 .modify__button {
   background-color: rgba(59, 59, 59, 0.800);
 }
+.clear__button {
+  background-color: rgba(59, 59, 59, 0.800);
+}
 .operation__button {
+  background-color: rgb(255, 157, 0);
+}
+.equals__button {
   background-color: rgb(255, 157, 0);
 }
 .button:hover {
