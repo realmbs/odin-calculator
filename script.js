@@ -26,6 +26,7 @@ var result = [];
 clearButton === null || clearButton === void 0 ? void 0 : clearButton.addEventListener('click', function () {
     result.length = 0;
     console.log(result);
+    calculatorDisplay === null || calculatorDisplay === void 0 ? void 0 : calculatorDisplay.textContent = 0;
 });
 numberButtons.forEach(function (button) {
     button.addEventListener('click', function () {
@@ -38,6 +39,8 @@ numberButtons.forEach(function (button) {
             result[result.length - 1] = Number("".concat(lastNumber).concat(buttonValue));
         }
         console.log(result);
+        // paint numbers to display as they are clicked
+        calculatorDisplay === null || calculatorDisplay === void 0 ? void 0 : calculatorDisplay.textContent = result.join('');
     });
 });
 operationButtons.forEach(function (button) {
@@ -83,5 +86,6 @@ equalsButton === null || equalsButton === void 0 ? void 0 : equalsButton.addEven
                 return;
         }
         console.log(resultValue);
+        calculatorDisplay === null || calculatorDisplay === void 0 ? void 0 : calculatorDisplay.textContent = resultValue;
     }
 });

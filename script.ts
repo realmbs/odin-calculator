@@ -29,6 +29,7 @@ const result: (number | string | null)[] = [];
 clearButton?.addEventListener('click', () => {
   result.length = 0;
   console.log(result);
+  calculatorDisplay?.textContent = 0;
 })
 
 numberButtons.forEach(button => {
@@ -41,6 +42,8 @@ numberButtons.forEach(button => {
       result[result.length - 1] = Number(`${lastNumber}${buttonValue}`);
     }
     console.log(result);
+    // paint numbers to display as they are clicked
+    calculatorDisplay?.textContent = result.join('');
   })
 })
 
@@ -90,5 +93,6 @@ equalsButton?.addEventListener('click', () => {
         return;
     }
     console.log(resultValue);
+    calculatorDisplay?.textContent = resultValue;
   }
 })
