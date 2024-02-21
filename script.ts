@@ -7,6 +7,10 @@ interface Calculator {
   negate(a: number): number;
 }
 
+const calculatorButtons = [...document.querySelectorAll('.button')];
+const display = document.querySelector('.calculator__display') as HTMLDivElement;
+const container = document.querySelector('.calculator__container') as HTMLDivElement;
+
 const calculator: Calculator = {
   add: (a, b) => a + b,
   subtract: (a, b) => a - b,
@@ -16,31 +20,60 @@ const calculator: Calculator = {
   negate: (a) => -a,
 }
 
-const calculatorButtons = [...document.querySelectorAll('.button')];
-const operationButtons = [...document.querySelectorAll('.operation__button')];
-const numberButtons = [...document.querySelectorAll('.number__button')];
-const modifyButtons = [...document.querySelectorAll('.modify__button')];
-
-console.log(calculatorButtons);
-console.log(operationButtons);
-console.log(numberButtons);
-console.log(modifyButtons);
-
 const completeOneOperation = (a: number, b: number, operation: string): number => {
   switch (operation) {
     case '+':
       return calculator.add(a, b);
+      break;
     case '-':
       return calculator.subtract(a, b);
-    case '*':
+      break;
+    case '*' || 'x':
       return calculator.multiply(a, b);
-    case '/':
+      break;
+    case '/' || '÷':
       return calculator.divide(a, b);
+      break;
     case '%':
       return calculator.percent(a, b);
-    case 'negate':
-      return calculator.negate(a);
+      break;
     default:
       return 0;
+      break;
   }
 }
+
+calculatorButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    console.log(button.textContent);
+    const buttonValue = button.textContent;
+    switch (buttonValue) {
+      case 'AC':
+        display.textContent = '0';
+        break;
+      case '±':
+        display.textContent = calculator.negate(+display.textContent).toString();
+        break;
+      case '%':
+        display.textContent = calculator.percent(+display.textContent, 100).toString();
+        break;
+      case '÷':
+        display.textContent = calculator.divide(+display.textContent, 100).toString();
+        break;
+      case '×':
+        display.textContent = calculator.multiply(+display.textContent, 100).toString();
+        break;
+      case '−':
+        display.textContent = calculator.subtract(+display.textContent, 100).toString();
+        break;
+      case '+':
+        display.textContent = calculator.add(+display.textContent, 100).toString();
+        break;
+      case '=':
+        display.textContent = completeOneOperation(+display.textContent, 100, '=').toString();
+        break;
+      default:
+        display.textContent = '0';
+    }
+  })
+})
